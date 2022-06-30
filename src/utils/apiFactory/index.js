@@ -2,8 +2,10 @@ import axios from "axios";
 
 export function getBaseAxiosInstance() {
   return axios.create({
-    baseURL: 'http://localhost:9494/',
-    headers: {},
+    baseURL: 'http://localhost:8080/',
+    headers: {
+      
+    },
   });
 }
 

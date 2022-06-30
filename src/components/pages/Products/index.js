@@ -4,7 +4,7 @@ function ProductsComponent({ products }) {
     <div>
       <h3>Product List</h3>
       {products?.map(element => {
-        return <span key={element}>-{element} </span>
+        return <div key={element.id}>{element.name}</div>
       })}
     </div>
   );
