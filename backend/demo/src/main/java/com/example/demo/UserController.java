@@ -20,11 +20,11 @@ public class UserController {
         return users.stream().map(User::getUsername).collect(Collectors.toList());
 //        return users;
     }
-    @PostMapping()
-    public User login(/*@RequestBody User user*/) {
+   @PostMapping()
+    public ResponseEntity< User> login(/*@RequestBody User user*/) {
 //        users.add(user);
         User user = new User(1, "John", "email1", "password1");
-        return user;
+        ResponseEntity responseEntity = new ResponseEntity<>(user, HttpStatus.CREATED);
+        return responseEntity;
     }
-
 }
