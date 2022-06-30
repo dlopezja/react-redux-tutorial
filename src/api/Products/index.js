@@ -1,15 +1,24 @@
 import apiFactory from "../../utils/apiFactory";
-
-export async function getProducts() {
+// create user obj
+// const user = {
+//   id: long,
+//   username: string,
+//   email: string,
+//   password: string,
+// };
+export async function login() {
   const baseApiInstance = apiFactory.getBaseAxiosInstance();
+  
   try {
-    const products = await baseApiInstance.get('/products');
-    return products.data;
+    const user = await baseApiInstance.post('/users');
+    
+    return user;
+
   } catch (error) {
     console.log('error :>> ', error);
   }
 }
 
 export default {
-  getProducts,
+  login,
 }

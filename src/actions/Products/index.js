@@ -6,4 +6,6 @@ export default {
   FETCH_PRODUCTS: () => actionCraetor.create('FETCH_PRODUCTS'),
 
   SET_PRODUCTS: (payload) => actionCraetor.create('SET_PRODUCTS', payload),
+
+  SET_USERS: (payload) => actionCraetor.create('SET_USERS', payload),
 }

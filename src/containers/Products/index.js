@@ -3,28 +3,29 @@ import { connect } from "react-redux";
 
 import ProductActions from '../../actions/Products';
 import ProductsComponent from "../../components/pages/Products";
+import UsersComponent from "../../components/pages/Users";
 
-function ProductsContainer({ products, getProducts }) {
+function UsersContainer({ users, login }) {
   useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+    login();
+  }, [login]);
 
   return (
-    <ProductsComponent products={products} />
+    <UsersComponent users={users} />
   );
 }
 
 function mapStateToProps(state) {
-  const { products } = state;
-  return { products }
+  const { users } = state;
+  return { users }
 }
 
 function mapDispatchToProps(dispatch) {
-  function getProducts() {
-    dispatch(ProductActions.FETCH_PRODUCTS());
+  function login() {
+    dispatch(ProductActions.SET_USERS());
   }
 
-  return { getProducts }
+  return { login }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
