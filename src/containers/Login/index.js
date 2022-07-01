@@ -1,16 +1,15 @@
-import { useEffect } from "react";
 import { connect } from "react-redux";
-
 import LoginActions from '../../actions/Login';
 import LoginComponent from "../../components/pages/Login";
 
 function LoginContainer({ userInformation, auth }) {
-  useEffect(() => {
-    auth();
-  }, [auth]);
 
+  function getUserInformation(userInformation){
+    console.log(userInformation)
+    auth(userInformation)
+  }
   return (
-    <Login userInformation={userInformation} />
+    <LoginComponent onClick={getUserInformation} />
   );
 }
 
@@ -21,10 +20,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   function auth() {
-    dispatch(LoginActions.FETCH_PRODUCTS());
+    dispatch(LoginActions.FETCH_USER());
   }
 
-  return { getProducts }
+  return { auth }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
