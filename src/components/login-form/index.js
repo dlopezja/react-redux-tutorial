@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import "./styles.css";
 
-function Login() {
+function Login(props) {
   const {
     register,
     handleSubmit,
@@ -13,7 +13,7 @@ function Login() {
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
-    console.log(data);
+    props.onClick(data);
   }; // your form submit function which will invoke after successful validation
 
   //console.log(watch("alias")); // you can watch individual input by pass the name of the input
