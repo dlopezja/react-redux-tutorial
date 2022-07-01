@@ -1,6 +1,9 @@
 import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Card from 'react-bootstrap/Card'
+
+
 
 import UserActions from '../../../actions/Users';
 
@@ -38,8 +41,12 @@ function LoginPage({users,getUsers}){
         const { username, password, submitted } = user;
 
         return (
-            <div className="col-md-6 col-md-offset-3">
+            <Card className="mt-3 mx-auto w-50">
+                <Card.Header>
                 <h2>Login</h2>
+                </Card.Header>
+            <Card.Body>
+           
                 <form name="form" onSubmit={handleSubmit}>
 
                     <div className={'form-group' + (user.submitted && !user.username ? ' has-error' : '')}>
@@ -70,7 +77,9 @@ function LoginPage({users,getUsers}){
                         <Link to="/register" className="btn btn-link">Register</Link>
                     </div>
                 </form>
-            </div>
+                </Card.Body>
+            </Card>
+         
         );
     }
 
