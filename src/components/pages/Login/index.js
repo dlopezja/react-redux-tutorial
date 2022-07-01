@@ -29,15 +29,11 @@ function LoginPage({users,getUsers}){
     function handleSubmit(e) {
         e.preventDefault();
         setUser({ submitted: true });
-        // if (user.username && user.password) {
-        //     login(user.username, user.password);
-        // }
-        //go to home page:
+      
         window.location.href = '/';
     }
 
-        //
-        //  const { loggingIn } = this.props;
+        
         const { username, password, submitted } = user;
         return (
             <div className="col-md-6 col-md-offset-3">
