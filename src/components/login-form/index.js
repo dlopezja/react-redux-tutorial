@@ -11,17 +11,11 @@ function Login({onClick}) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
-    console.log("from component",data)
-    onClick(data);
-  }; // your form submit function which will invoke after successful validation
-
   //console.log(watch("alias")); // you can watch individual input by pass the name of the input
   return (
     <div className="form-group">
       <h1> Log in to your Warehouse </h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onClick)}>
         <label>Name</label>
         <input
           {...register("name", {

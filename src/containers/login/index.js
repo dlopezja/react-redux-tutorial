@@ -6,7 +6,7 @@ import Login from "../../components/login-form";
 function LoginContainer({getUser}) {
 
 
-  function getUserInformation(user){
+  const getUserInformation = (user) =>{
     console.log("from container",user);
     getUser(user);
   }
