@@ -2,31 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import actions from '../../actions/Users/';
+import actions from '../../../actions/Users';
 
-class LoginPage extends React.Component {
-    constructor(props) {
-        super(props);
+function LoginPage(props){
+    
 
         // reset login status
-        this.props.logout();
+        
 
-        this.state = {
+        const state = {
             username: '',
             password: '',
-            submitted: false
+            submitted: false,
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+        
 
-    handleChange(e) {
+    function handleChange(e) {
         const { name, value } = e.target;
         this.setState({ [name]: value });
     }
 
-    handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
 
         this.setState({ submitted: true });
@@ -36,24 +33,24 @@ class LoginPage extends React.Component {
         }
     }
 
-    render() {
-        const { loggingIn } = this.props;
+    
+         const { loggingIn } = this.props;
         const { username, password, submitted } = this.state;
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2>Login</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
+                    <div className={'form-group' + (state.submitted && !state.username ? ' has-error' : '')}>
                         <label htmlFor="username">Username</label>
-                        <input type="text" className="form-control" name="username" value={username} onChange={this.handleChange} />
-                        {submitted && !username &&
+                        <input type="text" className="form-control" name="username" value={state.username} onChange={this.handleChange} />
+                        {state.submitted && !state.username &&
                             <div className="help-block">Username is required</div>
                         }
                     </div>
-                    <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
+                    <div className={'form-group' + (state.submitted && !state.password ? ' has-error' : '')}>
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
-                        {submitted && !password &&
+                        <input type="password" className="form-control" name="password" value={state.password} onChange={this.handleChange} />
+                        {state.submitted && !state.password &&
                             <div className="help-block">Password is required</div>
                         }
                     </div>
@@ -68,10 +65,11 @@ class LoginPage extends React.Component {
             </div>
         );
     }
-}
+
 
 function mapState(state) {
-    const { loggingIn } = state.authentication;
+    // const { loggingIn } = state.authentication;
+    const { loggingIn } =true
     return { loggingIn };
 }
 
