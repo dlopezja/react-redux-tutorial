@@ -1,10 +1,14 @@
-import { useEffect } from "react";
-import { connect } from "react-redux";
+
+
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import ProductActions from '../../actions/Products';
 import ProductsComponent from "../../components/pages/Products";
 
 function ProductsContainer({ products, getProducts }) {
+
   useEffect(() => {
     getProducts();
   }, [getProducts]);
@@ -14,8 +18,19 @@ function ProductsContainer({ products, getProducts }) {
   );
 }
 
+ProductsContainer.propTypes = {
+  getProducts: PropTypes.func,
+  products: PropTypes.array,
+}
+
+ProductsContainer.defaultProps = {
+  getProducts: () => {},
+  products: [],
+};
+
+
 function mapStateToProps(state) {
-  const { products } = state;
+  const { products } = state.products;
   return { products }
 }
 
@@ -28,3 +43,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);
+
+// TEAM: react-redux: createStore, Higher Order Component, connect, mapStateToProps, mapDispatchToProps, middlewares, reducers
+// ME: stronglthy connected components

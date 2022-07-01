@@ -13,7 +13,7 @@ function setProducts(state, action) {
 }
 
 export default function productsReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case actions.SET_PRODUCTS().type:
       return setProducts(state, action);
 
@@ -21,6 +21,3 @@ export default function productsReducer(state = initialState, action) {
       return state;
   }
 }
-
-
-// se guarda el store en el browser ?

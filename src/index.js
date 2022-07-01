@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,3 +23,7 @@ reportWebVitals();
 // 2. animetecss
 // 3. como llega la accion al reducer? M.G. ACTION CREATOR
 // 4. problemas con el cambio de version? M.P
+
+
+// npm install redux react-redux
+// 
