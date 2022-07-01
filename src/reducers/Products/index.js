@@ -2,9 +2,6 @@ import actions from '../../actions/Products';
 
 const initialState = {
   products: [],
-  users:{
-    loggingIn: false
-  }
 }
 
 function setProducts(state, action) {
