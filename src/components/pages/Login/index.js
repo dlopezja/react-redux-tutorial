@@ -1,38 +1,43 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-
-import actions from '../../../actions/Users';
-
 import Card from 'react-bootstrap/Card'
+import { connect } from "react-redux";
 
-function LoginPage(props) {
+import UsersActions from '../../../actions/Users';
+
+function LoginPage(users,getUsers) {
 
     // reset login status
-
-    const state = {
+     const[user,setUser]=useState({
         username: '',
         password: '',
-        submitted: false,
-    };
+         submitted: false,
+    })
+    // const state = {
+    //     username: '',
+    //     password: '',
+    //     submitted: false,
+    // };
 
     function handleChange(e) {
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
+        e.preventDefault();        
+        setUser({
+             ...user,
+             [e.target.name]: e.target.value,
+            });
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-
-        this.setState({ submitted: true });
-        const { username, password } = this.state;
-        if (username && password) {
-            this.props.login(username, password);
-        }
+        setUser({ 
+            ...user,
+            submitted: true });
+        // TODO call to dispatch the action
+        window.location.href = '/';
+        
     }
 
-    const { loggingIn } = props;
-    const { username, password, submitted } = state;
     return (
         <Card className="mt-3 mx-auto w-50">
             <Card.Header>
@@ -40,17 +45,17 @@ function LoginPage(props) {
             </Card.Header>
             <Card.Body>
                 <form name="form" onSubmit={handleSubmit}>
-                    <div className={'form-group' + (state.submitted && !state.username ? ' has-error' : '')}>
+                    <div className={'form-group' + (user.submitted && !user.username ? ' has-error' : '')}>
                         <label htmlFor="username">Username</label>
-                        <input type="text" className="form-control" name="username" value={state.username} onChange={handleChange} />
-                        {state.submitted && !state.username &&
+                        <input type="text" className="form-control" name="username" value={user.username} onChange={handleChange} />
+                        {user.submitted && !user.username &&
                             <div className="help-block">Username is required</div>
                         }
                     </div>
-                    <div className={'form-group' + (state.submitted && !state.password ? ' has-error' : '')}>
+                    <div className={'form-group' + (user.submitted && !user.password ? ' has-error' : '')}>
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={state.password} onChange={handleChange} />
-                        {state.submitted && !state.password &&
+                        <input type="password" className="form-control" name="password" value={user.password} onChange={handleChange} />
+                        {user.submitted && !user.password &&
                             <div className="help-block">Password is required</div>
                         }
                     </div>
@@ -68,17 +73,17 @@ function LoginPage(props) {
     );
 }
 
-function mapState(state) {
-    // const { loggingIn } = state.authentication;
-    const { loggingIn } = true
-    return { loggingIn };
-}
-
-const actionCreators = {
-    login: actions.login,
-    logout: actions.logout
-};
-
-const connectedLoginPage = connect(mapState, actionCreators)(LoginPage);
-export { connectedLoginPage as LoginPage };
-export default LoginPage
+function mapStateToProps(state) {
+    const { users } = state;
+    return { users };
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    function getUsers() {
+      dispatch(UsersActions.FETCH_USERS());
+    }
+  
+    return { getUsers }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
