@@ -1,22 +1,21 @@
-import actions from '../../actions/Products';
-import api from '../../api/Products';
+import actions from '../../actions/Login';
+//import api from '../../api/Products';
 
-async function fetchProducts(dispatch) {
-    try {
-      const response = await api.getProducts();
-      dispatch(actions.SET_PRODUCTS(response));
-      return response;
-    } catch (error) {
-      console.log('error :>> ', error);
-    }
+function postUser(dispatch, {getUser}) {
+    
+      //const response = await api.getProducts();
+      console.log("from postUser", getUser);
+      dispatch(actions.POST_USER(getUser));      
+      return getUser;
+
   }
   
-  export default function productsMiddleware(store) {
+  export default function userMiddleware(store) {
     const { dispatch } = store;
-    return (next) => async (action) => {
+    return (next) => (action) => {
       switch(action.type) {
-        case actions.FETCH_PRODUCTS().type:
-          await fetchProducts(dispatch);
+        case actions.POST_USER().type:
+           postUser(dispatch);
           break;
   
         default:

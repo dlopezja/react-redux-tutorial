@@ -1,14 +1,13 @@
-import React, {useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import LoginActions from '../../actions/Login';
 import Login from "../../components/login-form";
 
-function LoginContainer({user, getUser}) {
+function LoginContainer({getUser}) {
 
 
   function getUserInformation(user){
-    console.log(user);
+    console.log("from container",user);
     getUser(user);
   }
 
@@ -18,13 +17,14 @@ function LoginContainer({user, getUser}) {
 }
 
 function mapStateToProps(state) {
-  const { userInformation } = state;
-  return { userInformation }
+  const { user } = state;
+  return { user }
 }
 
 function mapDispatchToProps(dispatch) {
   function getUser(user) {
-    dispatch(LoginActions.GET_USER(user));
+    console.log("from actions", user);
+    dispatch(LoginActions.POST_USER(user));
   }
 
   return { getUser }

@@ -5,6 +5,7 @@ async function fetchProducts(dispatch) {
   try {
     const response = await api.getProducts();
     dispatch(actions.SET_PRODUCTS(response));
+    console.log("products from middleware", response);
     return response;
   } catch (error) {
     console.log('error :>> ', error);
