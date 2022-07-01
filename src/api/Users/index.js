@@ -1,16 +1,17 @@
 import apiFactory from "../../utils/apiFactory";
 
-export async function getProducts() {
+export async function getUsers() {
   const baseApiInstance = apiFactory.getBaseAxiosInstance();
   try {
-    const products = await baseApiInstance.get('/products');
+    const users = await baseApiInstance.get('/users');
     
-    return products.data;
+    return users.data;
   } catch (error) {
     console.log('error :>> ', error);
   }
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  getProducts,
+  getUsers,
 }
