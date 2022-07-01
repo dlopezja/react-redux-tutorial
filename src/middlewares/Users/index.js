@@ -4,14 +4,14 @@ import api from '../../api/Users';
 async function fetchUsers(dispatch) {
   try {
     const response = await api.getUsers();
-    dispatch(actions.SET_PRODUCTS(response));
+    dispatch(actions.SET_USERS(response));
     return response;
   } catch (error) {
     console.log('error :>> ', error);
   }
 }
 
-export default function productsMiddleware(store) {
+export default function usersMiddleware(store) {
   const { dispatch } = store;
   return (next) => async (action) => {
     switch(action.type) {

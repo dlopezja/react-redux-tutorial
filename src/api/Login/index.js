@@ -1,16 +1,15 @@
 import apiFactory from "../../utils/apiFactory";
 
-export async function getUsers() {
+export async function login() {
   const baseApiInstance = apiFactory.getBaseAxiosInstance();
   try {
-    const users = await baseApiInstance.get('/users');
+    const users = await baseApiInstance.get('/login');
     return users.data;
-
   } catch (error) {
     console.log('error :>> ', error);
   }
 }
 
 export default {
-    getUsers,
+    login,
 }

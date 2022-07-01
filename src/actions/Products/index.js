@@ -1,9 +1,9 @@
 import ActionCreator from "../../utils/actionCreator"
 
-const actionCraetor = new ActionCreator('Products');
+const actionCreator = new ActionCreator('Products');
 
 export default {
-  FETCH_PRODUCTS: () => actionCraetor.create('FETCH_PRODUCTS'),
+  FETCH_PRODUCTS: () => actionCreator.create('FETCH_PRODUCTS'),
 
-  SET_PRODUCTS: (payload) => actionCraetor.create('SET_PRODUCTS', payload),
+  SET_PRODUCTS: (payload) => actionCreator.create('SET_PRODUCTS', payload),
 }

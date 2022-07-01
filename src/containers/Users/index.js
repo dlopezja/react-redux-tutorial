@@ -8,7 +8,6 @@ function UsersContainer({ users, getUsers }) {
   useEffect(() => {
     getUsers();
   }, [getUsers]);
-
   return (
     <UsersComponent users={users} />
   );
