@@ -15,6 +15,7 @@ function ProductsContainer({ products, getProducts }) {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   const { products } = state;
   return { products }
 }
