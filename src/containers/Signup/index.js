@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import LoginActions from '../../actions/Signup';
-import LoginComponent from "../../components/pages/Signup";
+import SignupActions from '../../actions/Signup';
+import SignupComponent from "../../components/pages/Signup";
 
 function LoginContainer({ userInformation, auth }) {
 
@@ -9,7 +9,7 @@ function LoginContainer({ userInformation, auth }) {
     auth(userInformation)
   }
   return (
-    <LoginComponent onClick={getUserInformation} />
+    <SignupComponent onClick={getUserInformation} />
   );
 }
 
@@ -20,7 +20,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   function auth() {
-    dispatch(LoginActions.FETCH_USER());
+    dispatch(SignupActions.FETCH_USER());
   }
 
   return { auth }
