@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import LoginActions from '../../actions/Login';
-import Login from "../../components/login-form";
+import Login from "../../components/pages/login";
 
 function LoginContainer({getUser}) {
 

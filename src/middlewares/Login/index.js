@@ -5,7 +5,7 @@ function postUser(dispatch, action) {
     
       //const response = await api.getProducts();
       console.log("from postUser", action.payload);
-      dispatch(actions.POST_USER(action.payload));      
+      dispatch(actions.USER(action.payload));      
       return "null";
 
   }
