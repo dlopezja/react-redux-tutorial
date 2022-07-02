@@ -1,10 +1,12 @@
-import login from './Login';
+import signup from './SignUp';
 import products from './Products';
+import login from './Login';
 const { combineReducers } = require("redux");
 
 const rootReducer = combineReducers({
-  login,
+  signup,
   products,
+  login
 });
 
 

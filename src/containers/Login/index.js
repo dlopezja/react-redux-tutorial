@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import LoginActions from '../../actions/Login';
-import Login from "../../components/pages/login";
+import Login from "../../components/pages/Login";
 
 function LoginContainer({getUser}) {
 
@@ -17,7 +17,7 @@ function LoginContainer({getUser}) {
 }
 
 function mapStateToProps(state) {
-  console.log("fromlogincontainer",state);
+  console.log("fromlogincontainer", state);
   const { user } = state.login.user;
   return { user }
 }
@@ -25,7 +25,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   function getUser(user) {
     console.log("from actions", user);
-    dispatch(LoginActions.POST_USER(user));
+    dispatch(LoginActions.AUTH_USER(user));
   }
 
   return { getUser }

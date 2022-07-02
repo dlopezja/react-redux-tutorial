@@ -1,17 +1,19 @@
-import actions from '../../actions/Login';
+import actions from '../../actions/SignUp';
 
 const initialState = {
   user: {
     name: 'test',
+    email: 'test',
     password: 'test'
   },
 }
 
-function authUser(state, action) {
-  const { name, password } = action.payload;
+function setUser(state, action) {
+  const { name, email, password } = action.payload;
   console.log("from reducer/setUser", action.payload);
   let user = {
     name: name,
+    email: email,
     password: password
   }
   console.log("from reducer/setUser", user);
@@ -21,10 +23,10 @@ function authUser(state, action) {
   };
 }
 
-export default function authReducer(state = initialState, action) {
+export default function userReducer(state = initialState, action) {
   switch(action.type) {
     case actions.USER().type:
-      return authUser(state, action);
+      return setUser(state, action);
 
     default:
       return state;

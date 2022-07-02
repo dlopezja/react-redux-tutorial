@@ -1,7 +1,7 @@
-import actions from '../../actions/Login';
+import actions from '../../actions/SignUp';
 //import api from '../../api/Products';
 
-function authUser(dispatch, action) {
+function postUser(dispatch, action) {
     
       //const response = await api.getProducts();
       console.log("from postUser", action.payload);
@@ -16,8 +16,8 @@ function authUser(dispatch, action) {
     return (next) => (action) => {
       console.log("from middleware", action)
       switch(action.type) {
-        case actions.AUTH_USER().type:
-            authUser(dispatch, action);
+        case actions.POST_USER().type:
+           postUser(dispatch, action);
           break;
   
         default:
