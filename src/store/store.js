@@ -17,7 +17,7 @@ export default store;
 // create store with multiple reducers (help. composeReducers)
 */
 
-import { composeWithDevTools } from "@redux-devtools/extension";
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { applyMiddleware, createStore } from "redux";
 import rootReducer from "../reducers";
 import middlewares from "../middlewares";
