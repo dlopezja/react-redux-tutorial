@@ -17,7 +17,8 @@ function LoginContainer({getUser}) {
 }
 
 function mapStateToProps(state) {
-  const { user } = state;
+  console.log("fromlogincontainer",state);
+  const { user } = state.login.user;
   return { user }
 }
 

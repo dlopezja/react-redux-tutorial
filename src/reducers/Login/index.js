@@ -2,28 +2,31 @@ import actions from '../../actions/Login';
 
 const initialState = {
   user: {
-    name:'',
-    alias:'',
-    password:'',
+    name: 'test',
+    alias: 'test',
+    password: 'test'
   },
 }
 
-function postUser(state, action) {
-  const user = action.payload;
-  console.log("from reducer II", user)
+function setUser(state, action) {
+  const { name, alias, password } = action.payload;
+  console.log("from reducer/setUser", action.payload);
+  let user = {
+    name: name,
+    alias: alias,
+    password: password
+  }
+  console.log("from reducer/setUser", user);
   return {
     ...state,
-    name: user.name,
-    alias: user.alias,
-    password: user.password,
+    user
   };
 }
 
 export default function userReducer(state = initialState, action) {
   switch(action.type) {
     case actions.USER().type:
-      console.log("from reducer",actions.USER().type)
-      return postUser(state, action);
+      return setUser(state, action);
 
     default:
       return state;
