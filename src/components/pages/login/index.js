@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import store from '../../../store/store'
+
 
 import "./styles.css";
 
@@ -47,7 +47,7 @@ function Login({onClick}) {
 
         <input type="submit" />
       </form>
-      <button onClick={()=> console.log(store.getState())}>Check the store</button>
+      <button onClick={()=> console.log(localStorage.getItem('reduxState'))}>Check the store</button>
     </div>
   );
 }
