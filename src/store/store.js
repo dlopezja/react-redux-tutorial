@@ -1,3 +1,4 @@
+/*
 import { applyMiddleware, createStore } from "redux";
 import productsReducer from '../reducers/Products';
 import userReducer from '../reducers/Login';
@@ -14,3 +15,17 @@ const store = createStore(
 export default store;
 
 // create store with multiple reducers (help. composeReducers)
+*/
+
+import { composeWithDevTools } from "@redux-devtools/extension";
+import { applyMiddleware, createStore } from "redux";
+import rootReducer from "../reducers";
+import middlewares from "../middlewares";
+
+const store = createStore(
+  rootReducer,
+  // used composeWithDevTools to see the store in chrome (redux devtools)
+  composeWithDevTools(applyMiddleware(...middlewares))
+);
+
+export default store;
