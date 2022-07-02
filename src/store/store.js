@@ -12,10 +12,10 @@ const store = createStore(
   applyMiddleware(...middlewares),
 );
 
-export default store;
+export default store;*/
 
 // create store with multiple reducers (help. composeReducers)
-*/
+
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { applyMiddleware, createStore } from "redux";
