@@ -16,9 +16,9 @@ function SignUpContainer({ getUser, confirmUser }) {
     displayPanel(true);
   };
 
-  const confirmAccount = (data) => {
+  const confirmAccount = async (data) => {
     let confAcc = {...data, "email":JSON.parse(localStorage.getItem('reduxState')).signup.user.email };    
-    confirmUser(confAcc);
+    await confirmUser(confAcc);
   };
 
 

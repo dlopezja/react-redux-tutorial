@@ -8,10 +8,10 @@ const initialState = {
 }
 
 function confirmUser(state, action) {
-  const { name, code } = action.payload;
+  const { email, code } = action.payload;
   console.log("from reducer/setUser", action.payload);
   let confirmation = {
-    name: name,
+    email: email,
     code: code
   }
   console.log("from reducer/setUser", confirmation);
