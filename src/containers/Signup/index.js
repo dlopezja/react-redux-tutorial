@@ -5,7 +5,6 @@ import SignupComponent from "../../components/pages/Signup";
 function LoginContainer({ userInformation, auth }) {
 
   function getUserInformation(userInformation){
-    console.log(userInformation)
     auth(userInformation)
   }
   return (

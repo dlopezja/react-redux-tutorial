@@ -1,11 +1,10 @@
 import actions from '../../actions/Login';
 import api from '../../api/Signup';
 
-async function setUsers(dispatch) {
+async function setUsers(dispatch, action) {
     try {
       const response = await api.signup();
-      dispatch(actions.SET_USERS(response));
-      return response;
+      dispatch(actions.SET_USERS(action.payload));
     } catch (error) {
       console.log('error :>> ', error);
     }
