@@ -1,7 +1,7 @@
 import actions from '../../actions/Users';
 
 const initialState = {
-  users: [],
+  users: ['asd'],
 }
 
 function setUsers(state, action) {

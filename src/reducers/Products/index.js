@@ -1,7 +1,7 @@
 import actions from '../../actions/Products';
 
 const initialState = {
-  products: [],
+  products: ['test-product'],
 }
 
 function setProducts(state, action) {
@@ -22,5 +22,3 @@ export default function productsReducer(state = initialState, action) {
   }
 }
 
-
-// se guarda el store en el browser ?

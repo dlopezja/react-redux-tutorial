@@ -9,7 +9,7 @@ function Login({onTextChange, onSignIn}) {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  console.log('login asda:>> ', onTextChange);
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   };

@@ -14,7 +14,7 @@ function UsersContainer({ users, getUsers }) {
 }
 
 function mapStateToProps(state) {
-  const { users } = state;
+  const { users } = state.users;
   return { users }
 }
 
