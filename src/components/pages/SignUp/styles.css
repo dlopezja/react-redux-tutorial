@@ -12,6 +12,10 @@
     padding-bottom: 10px;
     border-bottom: 1px solid rgb(79, 98, 148);
   }
+
+  h3{
+    color: white;
+  }
   
   .form-group {
     display: flex;

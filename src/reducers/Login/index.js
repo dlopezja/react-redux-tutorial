@@ -2,7 +2,7 @@ import actions from '../../actions/Login';
 
 const initialState = {
   user: {
-    name: 'test',
+    email: 'test',
     password: 'test'
   },
 }

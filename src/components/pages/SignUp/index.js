@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import "./styles.css";
 
 function SignUp({ onClick }) {
+  
   const {
     register,
     handleSubmit,
@@ -14,7 +15,7 @@ function SignUp({ onClick }) {
   //console.log(watch("alias")); // you can watch individual input by pass the name of the input
   return (
     <div className="form-group">
-      <h1> Sign Up</h1>
+      <h1> Sign Up</h1> 
       <form onSubmit={handleSubmit(onClick)}>
         <label>Name</label>
         <input
@@ -30,18 +31,19 @@ function SignUp({ onClick }) {
           <p>First name cannot exceed 20 characters</p>
         )}
         {errors?.name?.type === "pattern" && (
-          <p>Alphabetical characters only</p>
+          <p>Not a valid email</p>
         )}
         <label>Email</label>
 
         <input
           placeholder="email"
-          {...register("alias", {
+          value="leo@test.com"
+          {...register("email", {
             pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
           })}
         />
-        {errors?.alias?.type === "pattern" && (
-          <p>Alphabetical characters only</p>
+        {errors?.email?.type === "pattern" && (
+          <p>It is not a valid email</p>
         )}
         <label>Password</label>
         <input
