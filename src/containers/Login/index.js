@@ -1,28 +1,48 @@
+import actions from '../../actions/Login';
 import { connect } from "react-redux";
-import LoginActions from '../../actions/Login';
+import { useState } from "react";
 import LoginComponent from "../../components/pages/Login";
 
-function LoginContainer({ userInformation, auth }) {
+function LoginContainer({ user, signIn }) {
+  const [values, setValues] = useState({ email: '', password: '' });
 
-  function getUserInformation(userInformation){
-    auth(userInformation)
+
+  const handleTextChange = (property) => (e) => {
+    setValues({ ...values, [property]: e.target.value });
+  }
+
+  function handleLogin() {
+    signIn({ email: values.email, password: values.password })
   }
   return (
-    <LoginComponent onClick={getUserInformation} />
-  );
+    <div>
+      <LoginComponent
+        onTextChange={handleTextChange}
+        onSignIn={handleLogin} />
+      {user.id &&
+        <div>
+          Id: {user.id}
+          <br />
+          Name: {user.name}
+          <br />
+          Email: {user.email}
+        </div>
+      }
+    </div>
+  )
 }
 
 function mapStateToProps(state) {
-  const { userInformation } = state;
-  return { userInformation }
+  const { user } = state.login;
+  return { user };
 }
 
 function mapDispatchToProps(dispatch) {
-  function auth() {
-    dispatch(LoginActions.FETCH_USER());
+  function signIn(payload) {
+    dispatch(actions.SIGN_IN(payload));
   }
 
-  return { auth }
+  return { signIn }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

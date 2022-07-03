@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ProductsContainer />} />
         <Route path="/users" element={<UsersContainer />} />
-        <Route path="login" element={<LoginContainer/>} />
+        <Route path="/login" element={<LoginContainer/>} />
         <Route path="signup" element={<SignupContainer/>} />
       </Routes>
       </BrowserRouter>

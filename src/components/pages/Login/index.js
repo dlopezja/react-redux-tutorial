@@ -1,7 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Button from "../../atoms/Button";
+import Input from "../../atoms/Input";
 import "./styles.css";
-function Login() {
+function Login({onTextChange, onSignIn}) {
   const {
     register,
     handleSubmit,
@@ -16,20 +18,21 @@ function Login() {
       <h1> Log in </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Username</label>
-        <input
+        <Input
           {...register("Username", {
             required: true,
             maxLength: 20,
             pattern: /^[A-Za-z]+$/i,
           })}
-        />
+          onChange={onTextChange('Username')}/>
         <label>Password</label>
-        <input 
+        <Input 
         type="password"
-        {...register("password", {  })} />
+        {...register("password", {  })} 
+        onChange={onTextChange('password')}/>
  
 
-        <input type="submit" />
+        <Button onClick={onSignIn} label={'Sign In'} />
       </form>
     </div>
   );
