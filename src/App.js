@@ -1,16 +1,19 @@
 import "./App.css";
 import ProductsContainer from "./containers/Products";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import SignUpContainer from "./containers/SignUp";
 import Home from "./components/pages/Home";
 import LoginContainer from "./containers/Login";
+import ProtectedRoute from "./components/protectedRoute";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<ProductsContainer />} />
+        <Route element={<ProtectedRoute user={localStorage.getItem('user')} />}>
+          <Route path="/products" element={<ProductsContainer />}/>
+        </Route>
         <Route path="/signup" element={<SignUpContainer />} />
         <Route path="/login" element={<LoginContainer />} />
       </Routes>
