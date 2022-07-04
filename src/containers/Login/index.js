@@ -24,8 +24,9 @@ function LoginContainer({ user, signIn }) {
 
   function handleLogin() {
     signIn({ email: values.email, password: values.password })
+    window.localStorage.setItem('user', JSON.stringify(user));
   }
-
+  
   return (
     <div>
       <LoginComponent
