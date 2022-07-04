@@ -1,14 +1,21 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import LoginActions from '../../actions/Login';
 import Login from "../../components/pages/Login";
 
 function LoginContainer({getUser}) {
-
+  let navigate = useNavigate();
 
   const getUserInformation = (user) =>{
     console.log("from container",user);
     getUser(user);
+    setTimeout(() => {
+      if(localStorage.getItem("token")){
+        navigate('/products');
+      }
+    }, 3000);
   }
 
   return (

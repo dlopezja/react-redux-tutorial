@@ -1,11 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import actions from '../../actions/Login';
 import api from '../../api/Login';
 
 async function authUser(dispatch, action) {
   const response = await api.loginCognito(action.payload);
   console.log("from postUser", action.payload);
+  localStorage.setItem("token", response);
   dispatch(actions.USER(response));      
-  console.log("Response postUser", response)
+  console.log("Response postUser", response);
   return response;
 }
   

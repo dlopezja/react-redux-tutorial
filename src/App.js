@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route element={<ProtectedRoute user={localStorage.getItem('user')} />}>
+        <Route element={<ProtectedRoute user={localStorage.getItem('token')} />}>
           <Route path="/products" element={<ProductsContainer />}/>
         </Route>
         <Route path="/signup" element={<SignUpContainer />} />
