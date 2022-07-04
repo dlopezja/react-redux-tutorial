@@ -2,8 +2,11 @@ import axios from "axios";
 
 export function getBaseAxiosInstance() {
   return axios.create({
-    baseURL: 'http://localhost:9494/',
-    headers: {},
+    baseURL: 'https://pa5w77y609.execute-api.us-west-2.amazonaws.com',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    },
   });
 }
 
