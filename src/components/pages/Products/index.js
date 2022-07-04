@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 function ProductsComponent({ products }) {
   
@@ -6,12 +6,12 @@ function ProductsComponent({ products }) {
     <div>
       <h3>Product List</h3>
       {products?.map(element => {
-        return <span key={element.id}>-{element.name} </span>
+        return <div key={element.id}>-{element.name} </div>
       })}
 
       <br />
      
-      <Link to='/products' >Sign In</Link>
+      {/* <Link to='/products' >Sign In</Link> */}
     </div>
   );
 }

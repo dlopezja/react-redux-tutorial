@@ -3,16 +3,18 @@ import LoginContainer from "../containers/Login";
 import ProductsContainer from '../containers/Products';
 
 
+
 function MainRouter() {
   // const user = JSON.parse(window.localStorage.getItem('user'));
+ 
   
 
   const ProtectedRoute = ({
-    user,    
+    user,  
     redirectPath = '/',    
     children,    
     }) => {    
-    if (!user) {    
+     if (!user) {   
     return <Navigate to={redirectPath} replace />;    
     }  
     return children ? children : <Outlet />;    

@@ -4,7 +4,7 @@ import MainRouter from './router';
 
 
 function App() {
-  window.localStorage.clear();
+  //window.localStorage.clear();
   return (
     <div className="App">
       <BrowserRouter>

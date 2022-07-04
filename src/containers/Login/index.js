@@ -4,44 +4,40 @@ import { connect } from "react-redux";
 import { useState } from "react";
 
 function LoginContainer({ user, signIn }) {
-  const [values, setValues] = useState({ email: '', password: '' });
+  const [values, setValues] = useState({ name: '',email: '', password: '' });
 
-  // TODO: try this approach first
-  // function handleTextChange(event) {
-  //   setUser({ email: event.target.value, password: event.target.value });
-  // }
-
-  // TODO: then try this approach
-  // function handleTextChange(property) {
-  //   return function (event) {
-  //       setValues({ ...values, [property]: event.target.value });
-  //   }
-  // }
 
   const handleTextChange = (property) => (e) => {
     setValues({ ...values, [property]: e.target.value });
   }
 
   function handleLogin() {
-    signIn({ email: values.email, password: values.password })
-    window.localStorage.setItem('user', JSON.stringify(user));
+    signIn({ name: values.name, email: values.email, password: values.password })
+    window.localStorage.setItem('user', JSON.stringify(values));
+    console.log("VALUES TRAE: , ", values);
+    //navigate to products page:
+    if(values.email!==""){
+      window.location.href = '/products';
+    }
+    //window.location.href = '/products';
+    
   }
   
   return (
+    <>
     <div>
       <LoginComponent
         onTextChange={handleTextChange}
         onSignIn={handleLogin} />
-      {user.id &&
-        <div>
-          Id: {user.id}
-          <br />
-          Name: {user.name}
-          <br />
-          Email: {user.email}
-        </div>
-      }
     </div>
+     {/* show the user response: */}
+    <div>
+      <h1>{user.name}</h1>
+      <h1>{user.email}</h1>
+      <h1>{user.password}</h1>
+    </div>
+    </>
+
   )
 }
 

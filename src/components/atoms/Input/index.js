@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import styles from './style.module.css';
 
 function Input({ onChange }) {
   return (
-    <input onChange={onChange} />
+    <input className={styles.myInput} onChange={onChange}  />
   )
 }
 
