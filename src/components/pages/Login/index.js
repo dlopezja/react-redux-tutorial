@@ -17,21 +17,21 @@ function SignUp({onClick}) {
     <div className="form-group">
       <h1> Log in to your Warehouse </h1>
       <form onSubmit={handleSubmit(onClick)}>
-        <label>Name</label>
+        <label>Email</label>
         <input
-          {...register("name", {
+          {...register("email", {
             required: true,
-            maxLength: 20,
-            pattern: /^[A-Za-z]+$/i,
+            maxLength: 50,
+            //pattern: /^[A-Za-z]+$/i,
           })}
         />
-        {errors?.name?.type === "required" && (
+        {errors?.email?.type === "required" && (
           <p>This field is required</p>
         )}
-        {errors?.name?.type === "maxLength" && (
+        {errors?.email?.type === "maxLength" && (
           <p>First name cannot exceed 20 characters</p>
         )}
-        {errors?.name?.type === "pattern" && (
+        {errors?.email?.type === "pattern" && (
           <p>Alphabetical characters only</p>
         )}
         <label>Password</label>

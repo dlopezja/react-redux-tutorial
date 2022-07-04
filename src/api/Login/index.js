@@ -11,5 +11,5 @@ export async function loginCognito(payload) {
 }
 
 export default {
-  signIn,
+  loginCognito,
 }

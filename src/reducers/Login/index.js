@@ -8,10 +8,10 @@ const initialState = {
 }
 
 function authUser(state, action) {
-  const { name, password } = action.payload;
+  const { email, password } = action.payload;
   console.log("from reducer/setUser", action.payload);
   let user = {
-    name: name,
+    email: email,
     password: password
   }
   console.log("from reducer/setUser", user);

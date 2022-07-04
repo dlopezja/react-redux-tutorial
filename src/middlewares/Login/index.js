@@ -1,28 +1,26 @@
 import actions from '../../actions/Login';
-//import api from '../../api/Products';
+import api from '../../api/Login';
 
-function authUser(dispatch, action) {
-    
-      //const response = await api.getProducts();
-      console.log("from postUser", action.payload);
-      dispatch(actions.USER(action.payload));      
-      
-      return action.payload;
+async function authUser(dispatch, action) {
+  const response = await api.loginCognito(action.payload);
+  console.log("from postUser", action.payload);
+  dispatch(actions.USER(response));      
+  console.log("Response postUser", response)
+  return response;
+}
+  
+export default function userMiddleware(store) {
+  const { dispatch } = store;
+  return (next) => async (action) => {
+    console.log("from middleware", action)
+    switch(action.type) {
+      case actions.AUTH_USER().type:
+        await authUser(dispatch, action);
+        break;
 
-  }
-  
-  export default function userMiddleware(store) {
-    const { dispatch } = store;
-    return (next) => (action) => {
-      console.log("from middleware", action)
-      switch(action.type) {
-        case actions.AUTH_USER().type:
-            authUser(dispatch, action);
-          break;
-  
-        default:
-          next(action);
-          break;
-      }
+      default:
+        next(action);
+        break;
     }
   }
+}
