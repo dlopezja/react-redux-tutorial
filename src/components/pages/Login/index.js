@@ -15,7 +15,7 @@ function LoginComponent({ onTextChange, onSignIn }) {
       </div>
 
       <div>
-        <Button className={styles.myButton} onClick={onSignIn} label={'Sign In'} />
+        <Button className={styles.myButton} onClick={onSignIn} label={'Sign In'}/>
         <br />       
         {/* <Link to='/products'>Products List</Link> */}
       </div>

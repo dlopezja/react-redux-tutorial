@@ -2,6 +2,7 @@ import LoginComponent from "../../components/pages/Login";
 import actions from '../../actions/Login';
 import { connect } from "react-redux";
 import { useState } from "react";
+import styles from './style.module.css';
 
 function LoginContainer({ user, signIn }) {
   const [values, setValues] = useState({ name: '',email: '', password: '' });
@@ -13,16 +14,14 @@ function LoginContainer({ user, signIn }) {
 
   function handleLogin() {
     signIn({ name: values.name, email: values.email, password: values.password })
-    window.localStorage.setItem('user', JSON.stringify(values));
-    console.log("VALUES TRAE: , ", values);
-    //navigate to products page:
-    if(values.email!==""){
+    window.localStorage.setItem('user', JSON.stringify(values)); 
+    //navigate to products page if values.email is not empty
+    if(values.name!=='' && values.email !== '' && values.password !== null){
       window.location.href = '/products';
     }
-    //window.location.href = '/products';
-    
+      
   }
-  
+  // const user= JSON.parse(window.localStorage.getItem('user'));
   return (
     <>
     <div>
@@ -30,11 +29,12 @@ function LoginContainer({ user, signIn }) {
         onTextChange={handleTextChange}
         onSignIn={handleLogin} />
     </div>
-     {/* show the user response: */}
-    <div>
-      <h1>{user.name}</h1>
-      <h1>{user.email}</h1>
-      <h1>{user.password}</h1>
+     {/* show the user response from localstorage: */}
+   
+    <div className={styles.details}>
+      <div>{user.name}</div>
+      <div>{user.email}</div>
+      <div>{user.password}</div>
     </div>
     </>
 
