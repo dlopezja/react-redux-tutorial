@@ -1,41 +1,27 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+
+import { Link } from "react-router-dom";
 import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
 import "./styles.css";
-function Login({onTextChange, onSignIn}) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+
+function LoginComponent({ onTextChange, onSignIn }) {
   console.log('login asda:>> ', onTextChange);
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
-  };
   return (
     <div className="form-group">
       <h1> Log in </h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Username</label>
-        <Input
-          {...register("Username", {
-            required: true,
-            maxLength: 20,
-            pattern: /^[A-Za-z]+$/i,
-          })}
-          onChange={onTextChange('Username')}/>
-        <label>Password</label>
-        <Input 
-        type="password"
-        {...register("password", {  })} 
-        onChange={onTextChange('password')}/>
- 
+      <div>
+      <label>Email:</label> <Input onChange={onTextChange('email')} />
+      <label>Password:</label> <Input onChange={onTextChange('password')} />
+      </div>
 
+      <div>
         <Button onClick={onSignIn} label={'Sign In'} />
-      </form>
+        <br />
+        <Link to='/'>Products List</Link>
+      </div>
     </div>
-  );
+  )
 }
 
-export default Login;
+
+export default LoginComponent;

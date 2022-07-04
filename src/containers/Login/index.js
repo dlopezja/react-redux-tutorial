@@ -26,6 +26,8 @@ function LoginContainer({ user, signIn }) {
           Name: {user.name}
           <br />
           Email: {user.email}
+          <br />
+          Password: {user.password}
         </div>
       }
     </div>

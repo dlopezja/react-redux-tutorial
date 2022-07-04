@@ -5,16 +5,18 @@ const initialState = {
     id: '1',
     email: 'asd@',
     name: 'asd',
+    password: 'reducerpassword'
   }
 }
 
 function setUser(state, action) {
 
-  const { id, name, email } = action.payload;
+  const { id, name, email, password } = action.payload;
   let user = {
     id: id,
     name: name,
-    email: email
+    email: email,
+    password: password
   }
   return {
     ...state,
