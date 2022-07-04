@@ -9,7 +9,8 @@ function ProductsComponent({ products }) {
       })}
 
       <br />
-      <Link to='/sign-in' >Sign In</Link>
+      {/* <Link to='/sign-in' >Sign In</Link> */}
+      <Link to='/' >Home</Link>
     </div>
   );
 }

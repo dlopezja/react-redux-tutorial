@@ -14,7 +14,7 @@ function LoginComponent({ onTextChange, onSignIn }) {
       <div>
         <Button onClick={onSignIn} label={'Sign In'} />
         <br />
-        <Link to='/'>Products List</Link>
+        <Link to='/products'>Products List</Link>
       </div>
     </div>
   )

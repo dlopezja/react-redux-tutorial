@@ -31,8 +31,7 @@ function LoginContainer({ user, signIn }) {
       <LoginComponent
         onTextChange={handleTextChange}
         onSignIn={handleLogin} />
-      {user.id &&
-        <div>
+      {<div>         
           Id: {user.id}
           <br />
           Name: {user.name}
@@ -42,6 +41,7 @@ function LoginContainer({ user, signIn }) {
       }
     </div>
   )
+
 }
 
 function mapStateToProps(state) {
