@@ -6,7 +6,7 @@ function ProductsComponent({ products }) {
     <div>
       <h3>Product List</h3>
       {products?.map(element => {
-        return <div key={element.id}>-{element.name} </div>
+        return <div key={element.id}>-{element} </div>
       })}
 
       <br />
