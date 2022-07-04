@@ -1,17 +1,15 @@
-import apiFactory from "../../utils/apiFactory";
+import apiFactory from "../../utils/apiFactory"
 
-export async function loginCognito() {
+export async function loginCognito(payload) {
   const baseApiInstance = apiFactory.getBaseAxiosInstance();
   try {
-    const cognitoResponse = await baseApiInstance.post('');
-    //return products.data;
-    console.log(prod)
-    return prod;
+    const response = await baseApiInstance.post('https://pa5w77y609.execute-api.us-west-2.amazonaws.com/dev/login', payload)
+    return response.data;
   } catch (error) {
     console.log('error :>> ', error);
   }
 }
 
 export default {
-  getProducts,
+  signIn,
 }
