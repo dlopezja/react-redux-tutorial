@@ -1,5 +1,5 @@
 function ProductsComponent({ products }) {
-  console.log('products asda:>> ', products);
+  console.log('products Component:>> ', products);
   return (
     <div>
       <h3>Product List</h3>

@@ -5,7 +5,7 @@ import Input from "../../atoms/Input";
 import "./styles.css";
 
 function LoginComponent({ onTextChange, onSignIn }) {
-  console.log('login asda:>> ', onTextChange);
+  console.log('login Component:>> ', onTextChange);
   return (
     <div className="form-group">
       <h1> Log in </h1>
