@@ -6,11 +6,8 @@ export default function ConfirmationPanel({onConfirm}) {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
-
-  
 
   return (
     <div className="form-group">

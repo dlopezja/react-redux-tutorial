@@ -1,18 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
-
 import "./styles.css";
 
 function SignUp({onClick}) {
   const { 
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
-  //console.log(watch("alias")); // you can watch individual input by pass the name of the input
   return (
     <div className="form-group">
       <h1> Log in to your Warehouse </h1>
@@ -38,8 +34,6 @@ function SignUp({onClick}) {
         <input 
         type="password"
         {...register("password", {  })} />
- 
-
         <input type="submit" />
       </form>
 

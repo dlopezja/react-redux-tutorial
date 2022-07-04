@@ -8,11 +8,9 @@ function SignUp({ onClick }) {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
-  //console.log(watch("alias")); // you can watch individual input by pass the name of the input
   return (
     <div className="form-group">
       <h1> Sign Up</h1> 
@@ -51,7 +49,6 @@ function SignUp({ onClick }) {
           type="password"
           {...register("password", {})}
         />
-
         <input type="submit" />
       </form>
       <button onClick={() => console.log(localStorage.getItem("reduxState"))}>

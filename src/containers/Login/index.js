@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +14,7 @@ function LoginContainer({getUser}) {
       if(localStorage.getItem("token")){
         navigate('/products');
       }
-    }, 3000);
+    }, 9000);
   }
 
   return (
