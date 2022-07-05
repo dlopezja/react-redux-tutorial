@@ -1,11 +1,13 @@
-
-
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import ProductActions from '../../actions/Products';
 import ProductsComponent from "../../components/pages/Products";
+
+// container recibe del reducer.
+// product component
+// clase nueva que ejecuta la action
 
 function ProductsContainer({ products, getProducts }) {
 
