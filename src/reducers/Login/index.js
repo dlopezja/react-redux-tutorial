@@ -2,17 +2,15 @@ import actions from '../../actions/Login';
 
 const initialState = {
   user: {
-    email: 'test',
-    password: 'test'
+    token:''
   },
 }
 
 function authUser(state, action) {
-  const { email, password } = action.payload;
+  const  token  = action.payload;
   console.log("from reducer/setUser", action.payload);
   let user = {
-    email: email,
-    password: password
+    token: token, 
   }
   console.log("from reducer/setUser", user);
   return {
