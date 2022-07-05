@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { useEffect } from "react";
 import LoginActions from '../../actions/Login';
 import Login from "../../components/pages/Login";
 
 function LoginContainer({user, getUser}) {
+
   let token = localStorage.getItem("token");
   let navigate = useNavigate();
   useEffect(() => {
@@ -24,6 +25,7 @@ function LoginContainer({user, getUser}) {
 
 function mapStateToProps(state) {
   console.log("fromlogincontainer", state);
+
   const { user } = state.login;
   return { user }
 }
@@ -38,3 +40,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+
