@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +15,6 @@ function LoginContainer({user, getUser}) {
   const getUserInformation = (user) =>{
     console.log("from container",user);
     getUser(user);
-
   }
 
   return (
