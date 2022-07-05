@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Files needed
+To correctly connect with backend, first create a .env file in root file, with the variable REACT_APP_API_URL=YOUR_API_URL (like this 'http://localhost:8080')
+
 ## Available Scripts
 
 In the project directory, you can run:
