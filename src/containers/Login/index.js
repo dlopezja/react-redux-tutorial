@@ -21,7 +21,7 @@ function LoginContainer({ user, signIn }) {
     }
       
   }
-  // const user= JSON.parse(window.localStorage.getItem('user'));
+  
   return (
     <>
     <div>

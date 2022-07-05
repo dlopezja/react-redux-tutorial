@@ -8,4 +8,9 @@
     font-size: 16px;
     color: rgb(0, 0, 0);
     outline: none;
+    margin:5px;
+}
+
+::placeholder{
+    color: rgb(0, 0, 0);
 }

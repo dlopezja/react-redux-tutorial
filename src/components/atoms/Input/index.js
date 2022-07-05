@@ -1,8 +1,8 @@
 import styles from './style.module.css';
 
-function Input({ onChange }) {
+function Input({ onChange,type,placeholder}) {
   return (
-    <input className={styles.myInput} onChange={onChange}  />
+    <input type={type} className={styles.myInput} onChange={onChange} placeholder={placeholder} />
   )
 }
 
