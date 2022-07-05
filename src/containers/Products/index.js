@@ -36,15 +36,15 @@ function mapStateToProps(state) {
   return { products }
 }
 
-function mapDispatchToProps(dispatch) {
-  function getProducts() {
-    dispatch(ProductActions.FETCH_PRODUCTS());
-  }
+//function mapDispatchToProps(dispatch) {
+//  function getProducts() {
+//    dispatch(ProductActions.FETCH_PRODUCTS());
+//  }
 
-  return { getProducts }
-}
+//  return { getProducts }
+//}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);
+export default connect(mapStateToProps, null)(ProductsContainer);
 
 // TEAM: react-redux: createStore, Higher Order Component, connect, mapStateToProps, mapDispatchToProps, middlewares, reducers
 // ME: stronglthy connected components
