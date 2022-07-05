@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-function ProtectedRoute({ user, redirectPath = '/', children}){
+function ProtectedRoute({  redirectPath = '/', children}){
+    let user=localStorage.getItem('token')
     if(!user){
         return(
             <>
                 <Navigate to={redirectPath} replace />
-                {alert("YOU SHALL NOT PASS!!!")}
             </>
         );
     }
