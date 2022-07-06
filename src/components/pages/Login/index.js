@@ -152,7 +152,11 @@ export default function Create({ onTextChange, onSignIn }) {
           error={passwordError}
         />
         {passwordError && <Alert severity="error">Password is required</Alert>}
-        <ButtonLoader />
+        <ButtonLoader 
+          type="submit" 
+          onClick={onSignIn}
+          disabled={nameError || passwordError || emailError|| values.name === '' || values.password === '' || values.email === ''|| !validateEmail(values.email)}
+        />
       </form>
     </Container>
     </div>
