@@ -26,7 +26,7 @@ export default function Chart() {
 
 
   return (
-    <div className="App">
+    <div className="chart-container" >
       <div style={{ width: 400 }}>
         <BarChart chartData={chartData} />
       </div>
