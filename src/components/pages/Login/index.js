@@ -24,7 +24,12 @@ const useStyles = makeStyles({
 function validateEmail (email) {
     const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regexp.test(email);
-  }
+}
+
+function validatePassword (password) {
+    const regexp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regexp.test(password);
+}
 
 export default function Create({ onTextChange, onSignIn }) {
   const classes = useStyles()
@@ -47,7 +52,23 @@ export default function Create({ onTextChange, onSignIn }) {
         ...values,
         [e.target.name]: e.target.value 
     })
-
+    if(values.name.length < 5) {
+        setNameError(true)
+    }else{
+        setNameError(false)
+    }
+    // validates the values.email with the validateEmail function:
+    if(!validateEmail(values.email)) {
+        setEmailError(true)
+    }else{
+        setEmailError(false)
+    }
+    // validates the values.password with the validatePassword function:
+    if(!validatePassword(values.password)) {
+        setPasswordError(true)
+    }else{
+        setPasswordError(false)
+    }
     onTextChange(e.target.name);    
   }
 
@@ -75,7 +96,7 @@ export default function Create({ onTextChange, onSignIn }) {
       setEmailError(true)
     }
    
-    
+    onSignIn();
   }
 
   return (
@@ -103,7 +124,8 @@ export default function Create({ onTextChange, onSignIn }) {
           type="text"
           error={nameError}
         />
-        {nameError && <Alert severity="error">Name is required</Alert>}
+        <div id="nameError" />
+        {nameError && <Alert severity="error">Name should be at least 5 character long!</Alert>}
         <TextField className={classes.field}
           onChange={handleChange}
           onInput={onTextChange('email')}
@@ -115,7 +137,7 @@ export default function Create({ onTextChange, onSignIn }) {
           type="email"
           error={emailError}
         />
-        {emailError && <Alert severity="error">Email is required</Alert>}
+        {emailError && <Alert severity="error">Email must be valid!</Alert>}
         <TextField className={classes.field}
           onChange={handleChange}
           onInput={onTextChange('password')}

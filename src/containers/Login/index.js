@@ -13,6 +13,9 @@ function LoginContainer({ user, signIn }) {
   }
 
   function handleLogin() {
+    console.log("From container, name: ", values.name);
+    console.log("From container, email: ", values.email);
+    console.log("From container, password: ", values.password);
     signIn({ name: values.name, email: values.email, password: values.password })
     window.localStorage.setItem('user', JSON.stringify(values)); 
     //navigate to products page if values.email is not empty
