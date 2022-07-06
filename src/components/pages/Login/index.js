@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './style.module.css';
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
@@ -19,7 +20,19 @@ const useStyles = makeStyles({
     marginTop: 20,
     marginBottom: 20,
     display: 'block'
-  }
+  },
+  Card:{
+    marginTop: 20,
+    marginBottom: 20,
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    width: '30%',
+  },
+  Gral:{
+    display:'flex',
+    justifyContent:'center',
+  },
 })
 function validateEmail (email) {
     const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -100,7 +113,8 @@ export default function Create({ onTextChange, onSignIn }) {
   }
 
   return (
-    <>
+    <div className={classes.Gral}>
+    <div className={classes.Card}>
     <CircularProgress />
     <Container size="sm">
       <Typography
@@ -118,7 +132,7 @@ export default function Create({ onTextChange, onSignIn }) {
           onInput={onTextChange('name')}
           label="name" 
           name="name"
-          variant="outlined" 
+          variant="filled" 
           color="secondary" 
           fullWidth={true}
           type="text"
@@ -131,7 +145,7 @@ export default function Create({ onTextChange, onSignIn }) {
           onInput={onTextChange('email')}
           label="email" 
           name="email"
-          variant="outlined" 
+          variant="filled" 
           color="secondary" 
           fullWidth={true}
           type="email"
@@ -143,7 +157,7 @@ export default function Create({ onTextChange, onSignIn }) {
           onInput={onTextChange('password')}
           name="password"
           label="password"
-          variant="outlined"
+          variant="filled"
           color="secondary"
           fullWidth={true}
           type="password"
@@ -166,6 +180,7 @@ export default function Create({ onTextChange, onSignIn }) {
 
       
     </Container>
-    </>
+    </div>
+    </div>
   )
 }
