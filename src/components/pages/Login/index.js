@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import styles from './style.module.css';
+import styles from './style.module.css'; // DO NOT REMOVE, BACKGROUND IMAGE
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
-import Icon from "@material-ui/core/Icon";
 import { makeStyles } from '@material-ui/core'
 import TextField from '@material-ui/core/TextField'
 import Alert from '@material-ui/lab/Alert';
-import CircularProgress from '@mui/material/CircularProgress';
+import ButtonLoader from '../../atoms/ButtonLoader/'
 
 
 /*var jalaemail = 'test@jala-fundation.org'
@@ -59,7 +57,6 @@ export default function Create({ onTextChange, onSignIn }) {
   const [passwordError, setPasswordError] = useState(false)
   const [emailError, setEmailError] = useState(false)
 
-  
   function handleChange(e) {
     setValues({
         ...values,
@@ -85,13 +82,6 @@ export default function Create({ onTextChange, onSignIn }) {
     onTextChange(e.target.name);    
   }
 
-  function handleClick(){
-    if(values.name === ''){
-        document.getElementById('nameError').appendChild=
-         <Alert severity="error">Name is required</Alert>
-    }
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     setNameError(false)
@@ -115,7 +105,6 @@ export default function Create({ onTextChange, onSignIn }) {
   return (
     <div className={classes.Gral}>
     <div className={classes.Card}>
-    <CircularProgress />
     <Container size="sm">
       <Typography
         variant="h6" 
@@ -125,7 +114,6 @@ export default function Create({ onTextChange, onSignIn }) {
       >
         Please enter your Credentials
       </Typography>
-      
       <form  autoComplete="off" onSubmit={handleSubmit}>
         <TextField className={classes.field}
           onChange={handleChange}
@@ -164,21 +152,8 @@ export default function Create({ onTextChange, onSignIn }) {
           error={passwordError}
         />
         {passwordError && <Alert severity="error">Password is required</Alert>}
-        <Button
-          onMouseOver={handleClick}
-          type="submit" 
-          color="primary" 
-          variant="contained"  
-          disabled={nameError || passwordError || emailError|| values.name === '' || values.password === '' || values.email === ''|| !validateEmail(values.email)}
-          onClick={onSignIn}
-          endIcon={<Icon />}>
-          Submit          
-        </Button>
-
+        <ButtonLoader />
       </form>
-
-
-      
     </Container>
     </div>
     </div>
