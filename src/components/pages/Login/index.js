@@ -2,8 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "./styles.css";
 
-function SignUp({onClick}) {
-  const { 
+function SignUp({ onClick }) {
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -17,26 +17,21 @@ function SignUp({onClick}) {
         <input
           {...register("email", {
             required: true,
-            maxLength: 50,
-            //pattern: /^[A-Za-z]+$/i,
+            pattern: /^[A-Za-z0-9._%+-]+@jala-foundation\.org$/g,
           })}
         />
-        {errors?.email?.type === "required" && (
-          <p>This field is required</p>
-        )}
-        {errors?.email?.type === "maxLength" && (
-          <p>First name cannot exceed 20 characters</p>
-        )}
-        {errors?.email?.type === "pattern" && (
-          <p>Alphabetical characters only</p>
-        )}
+        {errors?.email?.type === "required" && <p>This field is required</p>}
+        {errors?.email?.type === "pattern" && <p>This is not a valid email</p>}
         <label>Password</label>
-        <input 
-        type="password"
-        {...register("password", {  })} />
+        <input
+          type="password"
+          {...register("password", {
+            required: true,
+          })}
+        />
+        {errors?.password?.type === "required" && <p>This field is required</p>}
         <input type="submit" />
       </form>
-
     </div>
   );
 }

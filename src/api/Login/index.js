@@ -7,6 +7,7 @@ export async function loginCognito(payload) {
     return response.data;
   } catch (error) {
     console.log('error :>> ', error);
+    return error;
   }
 }
 
