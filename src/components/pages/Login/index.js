@@ -6,7 +6,13 @@ import Icon from "@material-ui/core/Icon";
 import { makeStyles } from '@material-ui/core'
 import TextField from '@material-ui/core/TextField'
 import Alert from '@material-ui/lab/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 
+
+/*var jalaemail = 'test@jala-fundation.org'
+if (/@jala-fundation.org\s*$/.test(jalaemail)) {
+   console.log("it ends in @jala-fundation.org");
+} */
 
 const useStyles = makeStyles({
   field: {
@@ -15,6 +21,10 @@ const useStyles = makeStyles({
     display: 'block'
   }
 })
+function validateEmail (email) {
+    const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regexp.test(email);
+  }
 
 export default function Create({ onTextChange, onSignIn }) {
   const classes = useStyles()
@@ -37,9 +47,17 @@ export default function Create({ onTextChange, onSignIn }) {
         ...values,
         [e.target.name]: e.target.value 
     })
-    onTextChange(e.target.name);
-    
+
+    onTextChange(e.target.name);    
   }
+
+  function handleClick(){
+    if(values.name === ''){
+        document.getElementById('nameError').appendChild=
+         <Alert severity="error">Name is required</Alert>
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setNameError(false)
@@ -48,8 +66,7 @@ export default function Create({ onTextChange, onSignIn }) {
 
     if (values.name === '') {
       setNameError(true);
-      
-      
+       
     }
     if (values.password === '') {
       setPasswordError(true)
@@ -63,9 +80,7 @@ export default function Create({ onTextChange, onSignIn }) {
 
   return (
     <>
-    <Alert key={Math.random(100000)} severity="error">
-        {"ERROR"}
-      </Alert>
+    <CircularProgress />
     <Container size="sm">
       <Typography
         variant="h6" 
@@ -86,9 +101,9 @@ export default function Create({ onTextChange, onSignIn }) {
           color="secondary" 
           fullWidth={true}
           type="text"
-        //   required
           error={nameError}
         />
+        {nameError && <Alert severity="error">Name is required</Alert>}
         <TextField className={classes.field}
           onChange={handleChange}
           onInput={onTextChange('email')}
@@ -98,10 +113,9 @@ export default function Create({ onTextChange, onSignIn }) {
           color="secondary" 
           fullWidth={true}
           type="email"
-          required
           error={emailError}
         />
-
+        {emailError && <Alert severity="error">Email is required</Alert>}
         <TextField className={classes.field}
           onChange={handleChange}
           onInput={onTextChange('password')}
@@ -111,20 +125,22 @@ export default function Create({ onTextChange, onSignIn }) {
           color="secondary"
           fullWidth={true}
           type="password"
-          required
           error={passwordError}
         />
-
+        {passwordError && <Alert severity="error">Password is required</Alert>}
         <Button
+          onMouseOver={handleClick}
           type="submit" 
           color="primary" 
-          variant="contained"
-          
+          variant="contained"  
+          disabled={nameError || passwordError || emailError|| values.name === '' || values.password === '' || values.email === ''|| !validateEmail(values.email)}
           onClick={onSignIn}
           endIcon={<Icon />}>
           Submit          
         </Button>
+
       </form>
+
 
       
     </Container>
