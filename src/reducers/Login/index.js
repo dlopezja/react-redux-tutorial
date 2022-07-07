@@ -4,25 +4,43 @@ const initialState = {
   user: {
     token:''
   },
+  errors: {
+    message: '',
+    code: '',
+  }
 }
 
 function authUser(state, action) {
   const  token  = action.payload;
-  console.log("from reducer/setUser", action.payload);
   let user = {
     token: token, 
   }
-  console.log("from reducer/setUser", user);
   return {
     ...state,
     user
   };
 }
 
+function authError(state, action){
+  const  {message}   = action.payload;
+  const {code} = action.payload;
+  let errors = {
+    message: message,
+    code: code 
+  }
+  return {
+    ...state,
+    errors
+  };
+}
+
 export default function authReducer(state = initialState, action) {
   switch(action.type) {
-    case actions.USER().type:
+    case actions.LOGIN().type:
       return authUser(state, action);
+
+    case actions.ERROR().type:
+      return authError(state, action);
 
     default:
       return state;

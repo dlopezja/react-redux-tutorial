@@ -5,21 +5,52 @@ import SignUpContainer from "./containers/SignUp";
 import Home from "./components/pages/Home";
 import LoginContainer from "./containers/Login";
 import ProtectedRoute from "./components/protectedRoute";
-import ChartContainer from "./components/pages/Chart"
+import ChartContainer from "./components/pages/Chart";
+import { connect } from "react-redux";
+import PublicRoute from "./components/PublicRoute";
+
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="/products" element={<ProductsContainer />}/>
-        </Route>
+        <Route
+          path="/"
+          element={
+            
+              <Home />
+            
+          }
+        />
+
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginContainer />
+            </PublicRoute>
+          }
+        />
         <Route path="/signup" element={<SignUpContainer />} />
-        <Route path="/login" element={<LoginContainer />} />
         <Route path="/chart" element={<ChartContainer />} />
+
+        <Route
+          path="/products"
+          element={
+            <ProtectedRoute>
+              <ProductsContainer />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  console.log("from app", state);
+
+  const { user } = state.login;
+  return { user };
+}
+
+export default connect(mapStateToProps)(App);

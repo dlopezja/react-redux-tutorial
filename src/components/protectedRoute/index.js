@@ -1,15 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
+import cookieService from '../../Services/CookieService';
 
-function ProtectedRoute({  redirectPath = '/', children}){
-    let user=localStorage.getItem('token')
-    if(!user){
-        return(
-            <>
-                <Navigate to={redirectPath} replace />
-            </>
-        );
-    }
-    return children ? children : <Outlet />;
+function ProtectedRoute({children}){
+    const user =  cookieService.getCookie('user');
+    console.log("from protected",user)
+    return user 
+    ? children 
+    : <Navigate to='/login' />
 }
 
 export default ProtectedRoute;

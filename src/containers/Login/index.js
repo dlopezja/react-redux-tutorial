@@ -1,26 +1,11 @@
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import LoginActions from "../../actions/Login";
 import Login from "../../components/pages/Login";
-import { errorHandler } from "../../utils/errorHandler";
 import ErrorAlert from "../../components/errorAlert";
 
 function LoginContainer({ user, getUser }) {
-  const [errorPanel, openPanel] = useState(false);
-  let token = localStorage.getItem("token");
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    if (errorHandler(user)) {
-      openPanel(true);
-    } else if (typeof token !== "string") {
-      openPanel(false);
-    } else{
-      navigate("/products");
-    }
-  }, [user]);
-
+  
+  
   const getUserInformation = (user) => {
     console.log("from container", user);
     getUser(user);
@@ -28,7 +13,7 @@ function LoginContainer({ user, getUser }) {
 
   return (
     <>
-      {errorPanel && <ErrorAlert statusCode={500} description={'The email or password is incorrect'}/>}
+      {user.errors.message.length !== 0 && <ErrorAlert statusCode={user.errors.code} description={user.errors.message}/>}
       <Login onClick={getUserInformation} />
     </>
   );
@@ -37,7 +22,8 @@ function LoginContainer({ user, getUser }) {
 function mapStateToProps(state) {
   console.log("fromlogincontainer", state);
 
-  const { user } = state.login;
+  const  user  = state.login;
+  console.log("fromlogincontainer", user);
   return { user };
 }
 

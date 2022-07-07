@@ -1,11 +1,18 @@
 import actions from '../../actions/Login';
 import api from '../../api/Login';
+import cookieService from '../../Services/CookieService';
 
 async function authUser(dispatch, action) {
-  const response = await api.loginCognito(action.payload);
-  localStorage.setItem("token", response);
-  dispatch(actions.USER(response));      
-  return response;
+
+    const response = await api.loginCognito(action.payload);
+    
+    if (!response.hasOwnProperty('response')) {
+      cookieService.saveCookie('user', response);
+      dispatch(actions.LOGIN(response)); 
+    } else {
+      dispatch(actions.ERROR(response));
+    }
+
 }
   
 export default function userMiddleware(store) {
