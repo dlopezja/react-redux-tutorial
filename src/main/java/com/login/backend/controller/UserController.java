@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,18 +20,19 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @CrossOrigin(origins = "*")
 public class UserController {
     @PostMapping("user")
-    public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
-
-        String token = getJWTToken(username);
-        User user = new User();
-        user.setUser(username);
-        user.setToken(token);
-        return user;
+    public User login(@RequestBody User user) {
+        String token = getJWTToken(user.getEmail());
+        User newUser = new User();
+        newUser.setName(user.getName());
+        newUser.setEmail(user.getEmail());
+        newUser.setPassword(user.getPassword());
+        newUser.setToken(token);
+        return newUser;
 
     }
 
     private String getJWTToken(String username) {
-        String secretKey = "mySecretKey";
+        String secretKey = "mySecretKeylijfopvemwwaaofvhybgfdbgfdbgfdbgfdbgfddsoafdlsafhfrewqfosaurfewjfods";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils
                 .commaSeparatedStringToAuthorityList("ROLE_USER");
 
@@ -44,7 +46,11 @@ public class UserController {
                                 .collect(Collectors.toList()))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 600000))
-                .signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
+                .signWith(SignatureAlgorithm.HS512,
+                        secretKey.getBytes(StandardCharsets.UTF_8))
+                .compact();
+
+
 
         return "Bearer " + token;
     }
