@@ -5,7 +5,8 @@ import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core'
 import TextField from '@material-ui/core/TextField'
 import Alert from '@material-ui/lab/Alert';
-import ButtonLoader from '../../atoms/ButtonLoader/'
+
+import Button from '../../atoms/Button'
 
 
 /*var jalaemail = 'test@jala-fundation.org'
@@ -99,7 +100,7 @@ export default function Create({ onTextChange, onSignIn }) {
       setEmailError(true)
     }
    
-    onSignIn();
+    // onSignIn();
   }
 
   return (
@@ -152,7 +153,25 @@ export default function Create({ onTextChange, onSignIn }) {
           error={passwordError}
         />
         {passwordError && <Alert severity="error">Password is required</Alert>}
-        <ButtonLoader />
+        
+        <Button
+          label="Sign In"
+          type="submit"
+          color="secondary"
+          variant="contained"
+          disabled={nameError || passwordError || emailError|| values.name === '' || values.password === '' || values.email === ''|| !validateEmail(values.email)}
+          //delay 3000ms before calling the onSignIn function:
+          onClick={() => {
+            setTimeout(() => {
+              onSignIn()
+            }, 3000)
+          }
+          }
+          // onClick={onSignIn}
+        
+          >
+          Submit         
+        </Button>
       </form>
     </Container>
     </div>
