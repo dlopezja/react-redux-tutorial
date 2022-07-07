@@ -152,8 +152,8 @@ export default function Create({ onTextChange, onSignIn }) {
           type="password"
           error={passwordError}
         />
-        {passwordError && <Alert severity="error">Password is required</Alert>}
-        
+        {passwordError && <Alert severity="error">Password is required</Alert>}     
+
         <Button
           label="Sign In"
           type="submit"
@@ -167,11 +167,10 @@ export default function Create({ onTextChange, onSignIn }) {
             }, 3000)
           }
           }
-          // onClick={onSignIn}
-        
           >
           Submit         
         </Button>
+
       </form>
     </Container>
     </div>
