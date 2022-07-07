@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function getBaseAxiosInstance() {
   return axios.create({
-    baseURL: 'http://localhost:9494/',
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {},
   });
 }
